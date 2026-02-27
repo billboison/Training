@@ -1,8 +1,7 @@
-cpp
 
 #include <iostream>
 #include <fstream>
-#include <cmatch>
+#include <cmath>
 #include <string>
 
 int main() {
@@ -13,7 +12,7 @@ int main() {
 	std::ifstream params("params.dat");
 	if (!params.is_open()) {
 		std::cerr << "Error: cannot open params.dat\n";
-		return 1:
+		return 1;
 	}
 
 
@@ -31,7 +30,7 @@ int main() {
 		return 1;
 	}
 
-	out << "#t\t\tx_numerical\n";
+	out << "#t\t\tx_numerical\t\tx_analytical\n";
 
 	double t = 0.0;
 	double x = 1.0;
@@ -39,7 +38,7 @@ int main() {
 
 	for (int i = 0; i <= nsteps; ++i) {
 		double x_exact = std:: exp(-3.0 * t);
-		out << t <<  "\t\t" << x <<  "\t\t" x_exact << "\n";
+		out << t <<  "\t\t" << x <<  "\t\t" << x_exact << "\n";
 		x = (1.0 - 3.0 * dt) * x;
 		t += dt;
 	}
@@ -48,3 +47,4 @@ int main() {
 	std::cout << "Done. dt=" << dt << " nsteps=" << nsteps << "\n";
 	return 0;
 
+}
